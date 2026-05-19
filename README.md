@@ -1,47 +1,48 @@
 # Projeto Final - Lista de Tarefas com Spring Boot
 
-[cite_start]Este projeto é uma API REST desenvolvida para gerenciar uma lista de tarefas [cite: 10][cite_start], construída como requisito de avaliação do curso de Análise e Desenvolvimento de Sistemas (Senac)[cite: 1, 5].
+Este projeto é uma API REST completa desenvolvida para gerenciar uma lista de tarefas, construída como requisito de avaliação para o curso de Análise e Desenvolvimento de Sistemas (ADS) no Senac.
 
-[cite_start]**Professora:** Marcileide Cardoso de Souza [cite: 6]
+**Professora:** Marcileide Cardoso de Souza
 
 ## 🛠️ Tecnologias e Ferramentas Utilizadas
-* **Java** * **Spring Boot** (Web, Data JPA, Validation)
-* **H2 Database** (Banco de dados em memória)
-* **Maven**
-* [cite_start]**Thunder Client / Postman** (Para testes de API) [cite: 36]
+* **Java**
+* **Spring Boot** (Web, Data JPA, Validation)
+* **H2 Database** (Banco de dados em memória para testes rápidos)
+* **Maven** (Gerenciador de dependências)
+* **Thunder Client / Postman** (Para testes dos endpoints)
 
 ## ⚙️ Funcionalidades Implementadas
-[cite_start]O projeto contempla um CRUD completo[cite: 36], além de funcionalidades extras:
-- [x] [cite_start]Criar uma nova tarefa (com validação para não permitir título em branco)[cite: 12, 16].
-- [x] [cite_start]Listar todas as tarefas cadastradas[cite: 13].
-- [x] [cite_start]Atualizar os dados de uma tarefa (descrição ou status de conclusão)[cite: 14].
-- [x] [cite_start]Excluir uma tarefa pelo ID[cite: 15].
-- [x] [cite_start]Rota adicional para contagem de tarefas concluídas utilizando DTO[cite: 17].
+O projeto contempla um CRUD completo e atende tanto aos requisitos obrigatórios quanto aos opcionais:
+- [x] **Criar uma tarefa:** Cadastro com título e descrição (validação inclusa para não permitir campos em branco).
+- [x] **Listar todas as tarefas:** Retorna todas as tarefas salvas no banco de dados.
+- [x] **Atualizar tarefa:** Permite editar a descrição ou marcar a tarefa como concluída.
+- [x] **Excluir tarefa:** Remove uma tarefa específica do sistema utilizando o ID.
+- [x] **Contagem de tarefas concluídas (Opcional):** Rota customizada que retorna a quantidade de tarefas finalizadas via DTO.
 
 ## 🚀 Como Executar o Projeto
 
-1. Clone este repositório em sua máquina local.
-2. Abra a pasta do projeto na sua IDE de preferência (VS Code, IntelliJ, etc.).
-3. Aguarde o Maven baixar as dependências do projeto.
-4. [cite_start]Execute o arquivo `ListatarefasApplication.java`[cite: 27].
-5. A API estará rodando localmente na porta `8080`. O banco de dados H2 é inicializado automaticamente.
+1. Baixe ou clone este repositório na sua máquina local.
+2. Abra a pasta do projeto na sua IDE de preferência (VS Code, IntelliJ IDEA, etc.).
+3. Aguarde o Maven baixar todas as dependências automaticamente.
+4. Execute a aplicação através da classe principal `ListatarefasApplication.java`.
+5. A API estará disponível no endereço local `http://localhost:8080`.
 
 ## 📍 Endpoints da API
 
-[cite_start]Abaixo estão as rotas disponíveis para teste[cite: 31]:
+Abaixo estão mapeadas as rotas que podem ser testadas no Thunder Client ou Postman:
 
-| Método HTTP | Endpoint | Descrição |
+| Método HTTP | Endpoint | Descrição da Ação |
 | :--- | :--- | :--- |
-| **GET** | `/tarefas` | [cite_start]Retorna a lista de todas as tarefas cadastradas[cite: 32]. |
-| **POST** | `/tarefas` | [cite_start]Cria uma nova tarefa a partir dos dados enviados no formato JSON[cite: 32]. |
-| **PUT** | `/tarefas/{id}` | [cite_start]Atualiza os dados de uma tarefa existente com base no seu ID[cite: 32]. |
-| **DELETE**| `/tarefas/{id}` | [cite_start]Remove uma tarefa específica do sistema com base no seu ID[cite: 32]. |
-| **GET** | `/tarefas/resumo`| Retorna a contagem total de tarefas que já foram marcadas como concluídas. |
+| **GET** | `/tarefas` | Retorna a lista de todas as tarefas cadastradas. |
+| **POST** | `/tarefas` | Cria uma nova tarefa a partir dos dados enviados no corpo da requisição. |
+| **PUT** | `/tarefas/{id}` | Atualiza os dados ou o status de uma tarefa existente com base no seu ID. |
+| **DELETE**| `/tarefas/{id}` | Remove uma tarefa específica do sistema com base no seu ID. |
+| **GET** | `/tarefas/resumo`| Retorna o total de tarefas marcadas como concluídas através de um DTO. |
 
-### Exemplo de Payload (POST e PUT)
+### 📦 Exemplo de JSON para Envio (POST e PUT)
 ```json
 {
-  "titulo": "Estudar Spring Boot",
-  "descricao": "Revisar anotações de persistência de dados",
+  "titulo": "Finalizar projeto de ADS",
+  "descricao": "Testar todas as rotas da API no Thunder Client",
   "concluida": false
 }
